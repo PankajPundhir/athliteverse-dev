@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 
 import Navigation from "./Navigation";
 import NavBar from "./NavBar";
@@ -10,7 +9,6 @@ import useWindowSize from "../../hooks/useWindowSize";
 import useOutsideClick from "../../hooks/useOutsideClick";
 import { ConfigContext } from "../../contexts/ConfigContext";
 import * as actionType from "../../store/actions";
-import * as resource from "../../../src/config/resource";
 
 const AdminLayout = ({ children }) => {
     const windowSize = useWindowSize();
@@ -97,11 +95,6 @@ const AdminLayout = ({ children }) => {
             {common}
             {mainContainer}
             { configBlock && <Configuration/> }
-            <footer className='footer text-center'>
-                <div className="d-flex offset-lg-2 justify-content-center align-items-center pt-2 pb-2">
-                    <div>&copy; {resource.Footer.footertext} | <Link to={{pathname:"https://www.bspot.com/pages/terms_of_use"}} target='_blank'>{resource.Footer.footerTermOfUse}</Link> | <Link to={{pathname:"https://www.bspot.com/pages/privacy_policy"}} target="_blank">{resource.Footer.footerPolicy}</Link></div>
-                </div>
-            </footer>
         </React.Fragment>
     );
 };

@@ -22,7 +22,7 @@ const ProfileSettings = () => {
                         <Row className="align-items-center text-center">
                             <Col>
                                 <Card.Body className="card-body">
-                                    <h3 className="mb-4">Profile Settings</h3>
+                                    {/* <h3 className="mb-4">Profile Settings</h3>
                                     <img src={avatar} className="img-radius mb-4" alt="User-Profile"/>
                                     <div className="input-group mb-3">
                                         <input type="text" className="form-control" placeholder="Name"/>
@@ -41,7 +41,7 @@ const ProfileSettings = () => {
                                         </div>
                                     </div>
                                     <button className="btn btn-primary shadow-2 mb-4">Register</button>
-                                    <p className="mb-0 text-muted">Don’t have an account? <NavLink to="/auth/signup-1">Signup</NavLink></p>
+                                    <p className="mb-0 text-muted">Don’t have an account? <NavLink to="/auth/signup-1">Signup</NavLink></p> */}
                                 </Card.Body>
                             </Col>
                         </Row>

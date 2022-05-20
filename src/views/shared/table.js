@@ -2,8 +2,6 @@ import React from 'react';
 import { Row, Col, Pagination} from 'react-bootstrap';
 import BTable from 'react-bootstrap/Table';
 import { useTable, useSortBy, useGlobalFilter, usePagination } from 'react-table'
-import * as resource from '../../../src/config/resource';
-
 
 const Table = ({ columns, data, header })=> {
     const {
@@ -42,7 +40,7 @@ const Table = ({ columns, data, header })=> {
                     <h5 className='mb-0'>{header}</h5>
                 </Col>
                 <Col className="col-sm-3 d-flex align-items-center col text-right justify-content-end">
-                    {resource.Players.LblShow}
+                    {'Show'}
                     <select
                         className='form-control w-auto mx-2'
                         value={pageSize}
@@ -56,7 +54,7 @@ const Table = ({ columns, data, header })=> {
                             </option>
                         ))}
                     </select>
-                    {resource.Players.LblEntries}
+                    {'Entries'}
                 </Col>
             </Row>
             <BTable striped bordered hover responsive {...getTableProps()}>
@@ -101,9 +99,9 @@ const Table = ({ columns, data, header })=> {
             <Row className='justify-content-between mt-3'>
                 <Col sm={12} md={6}>
                     <span className="d-flex align-items-center">
-                       <div className='mr-1'> {resource.Players.LblPage}</div> {' '} <strong> {pageIndex + 1} {resource.Players.LblOf} {pageOptions.length} </strong>{' '}
+                       <div className='mr-1'> {'Page'}</div> {' '} <strong> {pageIndex + 1} {'Of'} {pageOptions.length} </strong>{' '}
                         |
-                        {resource.Players.LblGoToPage}:{' '}
+                        {'PAge'}:{' '}
                         <input
                             type="number"
                             className='form-control ml-2'

@@ -46,7 +46,7 @@ const MapForm = () => {
                                                 </div>
                                             </div>
                                             <button className="btn btn-primary shadow-2 mb-4">Register</button>
-                                            <p className="mb-0 text-muted">Don’t have an account? <NavLink to="/auth/signup-1">Signup</NavLink></p>
+                                            {/* <p className="mb-0 text-muted">Don’t have an account? <NavLink to="/auth/signup-1">Signup</NavLink></p> */}
                                         </div>
                                     </div>
                                 </div>

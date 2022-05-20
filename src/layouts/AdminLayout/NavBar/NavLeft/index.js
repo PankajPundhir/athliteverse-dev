@@ -1,29 +1,27 @@
-import React, { useContext } from 'react';
-import { ListGroup, Dropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import * as resource from '../../../../../src/config/resource';
-import useWindowSize from "../../../../hooks/useWindowSize";
-import { ConfigContext } from "../../../../contexts/ConfigContext";
-import NavSearch from "./NavSearch";
+import React from 'react';
+import { ListGroup } from 'react-bootstrap';
+//import useWindowSize from "../../../../hooks/useWindowSize";
+//import { ConfigContext } from "../../../../contexts/ConfigContext";
 
 const NavLeft = () => {
-    const windowSize = useWindowSize();
+   // const windowSize = useWindowSize();
 
-    const configContext = useContext(ConfigContext);
-    const { rtlLayout } = configContext.state;
-    let dropdownRightAlign = false;
-    if (rtlLayout) {
-        dropdownRightAlign = true;
-    }
+    //const configContext = useContext(ConfigContext);
+    //const { rtlLayout } = configContext.state;
+    // let dropdownRightAlign = false;
+    // if (rtlLayout) {
+    //     dropdownRightAlign = true;
+    // }
 
-    let navItemClass = ['nav-item'];
-    if (windowSize.width <= 575) {
-        navItemClass = [...navItemClass, 'd-none'];
-    }
+    // let navItemClass = ['nav-item'];
+    // if (windowSize.width <= 575) {
+    //     navItemClass = [...navItemClass, 'd-none'];
+    // }
 
     return (
         <React.Fragment>
-            <h5 className='mt-2 ml-5 text-white justify-content-start'>{resource.LogIn.Application_Title}</h5>
+            {/* <h5 className='mt-2 ml-5 text-white justify-content-start'>{resource.LogIn.Application_Title}</h5> */}
+            <h5 className='mt-2 ml-5 text-white justify-content-start'>{'Athliteverse'}</h5>
             <ListGroup as='ul' bsPrefix=' ' className="navbar-nav mr-auto">
                 {/* <ListGroup.Item as='li' bsPrefix=' ' className={navItemClass.join(' ')}>
                     <Dropdown alignRight={dropdownRightAlign}>

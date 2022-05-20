@@ -34,15 +34,15 @@ const NavItem = ({ layout, item }) => {
                 <NavBadge items={item}/>
             </a>
         );
-    }else {
-        subContent = (<>{item.icon?<NavLink to={item.url} className="nav-link" exact={true} target={itemTarget}>
-        <NavIcon items={item}/>
-        {itemTitle}
-        <NavBadge items={item}/>
-    </NavLink>:''}</>
+    } else {
+        subContent = (
+            <NavLink to={item.url} className="nav-link" exact={true} target={itemTarget}>
+                <NavIcon items={item}/>
+                {itemTitle}
+                <NavBadge items={item}/>
+            </NavLink>
         );
     }
-    
     let mainContent = '';
     if (layout === 'horizontal') {
         mainContent = (

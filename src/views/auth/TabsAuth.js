@@ -9,7 +9,7 @@ const TabsAuth = () => {
         <React.Fragment>
             <Breadcrumb/>
             <div className="auth-wrapper">
-                <div className="auth-content">
+                {/* <div className="auth-content">
                     <div className="auth-bg">
                         <span className="r"/>
                         <span className="r s"/>
@@ -41,7 +41,7 @@ const TabsAuth = () => {
                             <p className="mb-0 text-muted">Don’t have an account? <NavLink to="/auth/signup-1">Signup</NavLink></p>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </React.Fragment>
     );

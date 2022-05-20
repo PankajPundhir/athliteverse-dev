@@ -1,12 +1,10 @@
 import React, { useState, useReducer } from 'react';
 import { Row, Col, Button, Alert } from 'react-bootstrap';
-import { FIREBASE_STATE_CHANGED } from '../../../store/actions';
-import * as Yup from 'yup';
+import { COGNITO_STATE_CHANGED } from '../../../store/actions';
 import { Formik } from 'formik';
 import useAuth from '../../../hooks/useAuth';
 import useScriptRef from '../../../hooks/useScriptRef';
 import Swal from 'sweetalert2';
-import * as resource from '../../../config/resource'; 
 import { CognitoUserAttribute, CognitoUser, AuthenticationDetails } from 'amazon-cognito-identity-js';
 import UserPool from '../../auth/signin/UserPool';
 
@@ -40,7 +38,7 @@ const CognitoLogin = ({ className, ...rest }) => {
   const { cognitoLogin } = useAuth();
   const reducer = (state, action) => {
     switch (action.type) {
-      case FIREBASE_STATE_CHANGED: {
+      case COGNITO_STATE_CHANGED: {
         const { isLoggedIn, user } = action.payload;
 
         return {
@@ -86,12 +84,12 @@ const CognitoLogin = ({ className, ...rest }) => {
 
      user.authenticateUser(authUser, {
       onSuccess: (data) => {
-        swalAlert('success', resource.LogIn.MsgSuccessfullyLoggedIn)
+        //swalAlert('success', resource.LogIn.MsgSuccessfullyLoggedIn)
         cognitoLogin(data.idToken.payload["cognito:username"], user.Username,user.sub);
       
       },
       onFailure: (err) => {
-        swalAlert('warning', resource.LogIn.ErrMsgIncorrectUserNamePassword);
+        //swalAlert('warning', resource.LogIn.ErrMsgIncorrectUserNamePassword);
         //console.error("onFailure", err)
         setisLoading(false)
       },
@@ -102,7 +100,7 @@ const CognitoLogin = ({ className, ...rest }) => {
 
         user.completeNewPasswordChallenge(newPassword, userAttr, {
           onSuccess: result => {
-            swalAlert('success', resource.LogIn.MsgSuccessfullyLoggedIn);
+            //swalAlert('success', resource.LogIn.MsgSuccessfullyLoggedIn);
             cognitoLogin(user.username, user.username,user.sub);
            
           },
@@ -134,16 +132,16 @@ const CognitoLogin = ({ className, ...rest }) => {
           try {
             if (values.email == "" || values.email == null || values.email == undefined || values.password == "" || values.password == null || values.password == undefined) {
               if (values.email == "" || values.email == null || values.email == undefined) {
-                swalAlert('warning', resource.LogIn.ErrMsgIncorrectUserNamePassword);
+                //swalAlert('warning', resource.LogIn.ErrMsgIncorrectUserNamePassword);
               }
               else if (values.password == "" || values.password == null || values.password == undefined) {
-                swalAlert('warning', resource.LogIn.ErrMsgIncorrectUserNamePassword);
+                //swalAlert('warning', resource.LogIn.ErrMsgIncorrectUserNamePassword);
               }
             }
             else {
               var isValidEmail = validate(values.email);
               if (!isValidEmail) {
-                swalAlert('warning', resource.LogIn.ErrMsgIncorrectUserNamePassword);
+                //swalAlert('warning', resource.LogIn.ErrMsgIncorrectUserNamePassword);
               }
               else {
                 logInCognito(values.email, values.password)
@@ -190,7 +188,7 @@ const CognitoLogin = ({ className, ...rest }) => {
                 //error={touched.email && errors.email}
                 label="Username"
                 name="email"
-                placeholder={resource.LogIn.LblUserName}
+                //placeholder={resource.LogIn.LblUserName}
                 onBlur={handleBlur}
                 onChange={handleChange}
                 type="email"
@@ -203,7 +201,7 @@ const CognitoLogin = ({ className, ...rest }) => {
                 className="form-control"
                 label="Password"
                 name="password"
-                placeholder={resource.LogIn.LblPassword}
+                //placeholder={resource.LogIn.LblPassword}
                 onBlur={handleBlur}
                 onChange={handleChange}
                 type="password"
@@ -227,7 +225,7 @@ const CognitoLogin = ({ className, ...rest }) => {
                   type="submit"
                   variant="primary"
                 >
-                  {resource.LogIn.BtnSignIn}
+                  {'Login'}
                 </Button>
               </Col>
             </Row>

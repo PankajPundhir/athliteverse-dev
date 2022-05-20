@@ -1,10 +1,7 @@
 import React, { useState, createContext, useEffect, useReducer } from 'react';
-import { FIREBASE_STATE_CHANGED } from "../store/actions";
+import { COGNITO_STATE_CHANGED } from "../store/actions";
 import Loader from "../components/Loader/Loader";
-import { CognitoUserAttribute, CognitoUser, AuthenticationDetails } from 'amazon-cognito-identity-js';
 import UserPool from '../views/auth/signin/UserPool';
-import Swal from 'sweetalert2';
-import * as resource from '../../src/config/resource';
 
 const initialState = {
   isLoggedIn: false,
@@ -14,7 +11,7 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case FIREBASE_STATE_CHANGED: {
+    case COGNITO_STATE_CHANGED: {
       const { isLoggedIn, user } = action.payload;
 
       return {
@@ -29,17 +26,17 @@ const reducer = (state, action) => {
     }
   }
 };
-const swalAlert = ((type, text) => {
-  Swal.fire({
-    title: '',
-    type: type,
-    text: text,
-    position: "center",
-    timer: 3000,
-    icon: type,
-    showConfirmButton: false
-  });
-})
+// const swalAlert = ((type, text) => {
+//   Swal.fire({
+//     title: '',
+//     type: type,
+//     text: text,
+//     position: "center",
+//     timer: 3000,
+//     icon: type,
+//     showConfirmButton: false
+//   });
+// })
 
 const CognitoContext = createContext({
   ...initialState,
@@ -49,14 +46,12 @@ const CognitoContext = createContext({
 
 export const CognitoProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [firstLogin, setFirstLogin] = useState(false)
-  const [userAttr, setUserAttr] = useState({})
   const [UserInfo, setUserInfo] = useState()
 
   const cognitoLogin = async (userInfo, userName, iD) => {
     setUserInfo(userInfo);
         dispatch({
-          type: FIREBASE_STATE_CHANGED,
+          type: COGNITO_STATE_CHANGED,
           payload: {
             isLoggedIn: true,
             user:{
@@ -72,7 +67,7 @@ export const CognitoProvider = ({ children }) => {
     const user = UserPool.getCurrentUser();
     if (user) {
       dispatch({
-        type: FIREBASE_STATE_CHANGED,
+        type: COGNITO_STATE_CHANGED,
         payload: {
           isLoggedIn: false,
           user: null
@@ -90,7 +85,7 @@ export const CognitoProvider = ({ children }) => {
       setUserInfo(user.username);
       
       dispatch({
-        type: FIREBASE_STATE_CHANGED,
+        type: COGNITO_STATE_CHANGED,
         payload: {
           isLoggedIn: true,
           user: {
@@ -102,7 +97,7 @@ export const CognitoProvider = ({ children }) => {
     } else {
       setUserInfo('');
       dispatch({
-        type: FIREBASE_STATE_CHANGED,
+        type: COGNITO_STATE_CHANGED,
         payload: {
           isLoggedIn: false,
           user: null

@@ -6,7 +6,6 @@ import navigation from "../../../menu-items";
 import { BASE_TITLE, BASENAME } from "../../../config/constant";
 
 const Breadcrumb = () => {
-    
     const [main, setMain] = useState([]);
     const [item, setItem] = useState([]);
 
@@ -25,17 +24,9 @@ const Breadcrumb = () => {
                 if (collapse.type && collapse.type === 'collapse') {
                     getCollapse(collapse, index);
                 } else if (collapse.type && collapse.type === 'item') {
-                    
                     if (document.location.pathname === BASENAME + collapse.url) {
-                        if(document.location.pathname.includes('playerdetails')){
-                            setMain(collapse.parentPage);
+                        setMain(item);
                         setItem(collapse);
-                        }
-                        else{
-                            setMain(item);
-                            setItem(collapse);
-                        }
-                        
                     }
                 }
                 return false;
@@ -46,24 +37,23 @@ const Breadcrumb = () => {
     let mainContent, itemContent;
     let breadcrumbContent = '';
     let title = '';
-    let pageHeader = '';
 
-    if (main && (main.type === 'collapse'|| main.isParent)) {
+    if (main && main.type === 'collapse') {
         mainContent = (
             <ListGroup.Item as='li' bsPrefix=' ' className="breadcrumb-item">
-                <Link to={main.url}>{main.title}</Link>
+                <Link to='#'>{main.title}</Link>
             </ListGroup.Item>
         );
     }
 
     if (item && item.type === 'item') {
         title = item.title;
-        pageHeader = item.pageHeader;
         itemContent = (
             <ListGroup.Item as='li' bsPrefix=' ' className="breadcrumb-item">
                 <Link to='#'>{title}</Link>
             </ListGroup.Item>
         );
+
         if (item.breadcrumbs !== false) {
             breadcrumbContent = (
                 <div className="page-header">
@@ -71,7 +61,7 @@ const Breadcrumb = () => {
                         <div className="row align-items-center">
                             <div className="col-md-12">
                                 <div className="page-header-title">
-                                    <h5 className="m-b-10">{pageHeader}</h5>
+                                    <h5 className="m-b-10">{title}</h5>
                                 </div>
                                 <ListGroup as='ul' bsPrefix=' ' className="breadcrumb">
                                     <ListGroup.Item as='li' bsPrefix=' ' className="breadcrumb-item">

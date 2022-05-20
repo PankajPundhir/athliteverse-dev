@@ -23,7 +23,7 @@ const ChangePassword = () => {
                                         <i className="feather icon-lock auth-icon"/>
                                     </div>
                                     <h3 className="mb-4 f-w-400">Change Password</h3>
-                                        <div className="input-group mb-2">
+                                        {/* <div className="input-group mb-2">
                                             <input type="password" className="form-control" placeholder="Current Password" />
                                         </div>
                                         <div className="input-group mb-2">
@@ -33,7 +33,7 @@ const ChangePassword = () => {
                                             <input type="password" className="form-control" placeholder="Re-Type New Password" />
                                         </div>
                                         <button className="btn btn-primary mb-4">Change password</button>
-                                        <p className="mb-0 text-muted">Don’t have an account? <NavLink to="/auth/signup-1">Signup</NavLink></p>
+                                        <p className="mb-0 text-muted">Don’t have an account? <NavLink to="/auth/signup-1">Signup</NavLink></p> */}
                                 </Card.Body>
                             </Col>
                         </Row>
