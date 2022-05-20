@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-
+import NavLogoImage from '../NavBar/NavLogoImg.png';
 import NavLeft from "./NavLeft";
 import NavRight from "./NavRight";
 
@@ -24,7 +24,7 @@ const NavBar = () => {
     }
 
     const navToggleHandler = () => {
-        dispatch({type: actionType.COLLAPSE_MENU})
+        dispatch({ type: actionType.COLLAPSE_MENU })
     };
 
     // let moreClass = ['mob-toggler'];;
@@ -40,20 +40,19 @@ const NavBar = () => {
     let navBar = (
         <React.Fragment>
             <div className="m-header">
-                <Link to='#' className={toggleClass.join(' ')} id="mobile-collapse" onClick={navToggleHandler}><span/></Link>
+                <Link to='#' className={toggleClass.join(' ')} id="mobile-collapse" onClick={navToggleHandler}><span /></Link>
                 <Link to='#' className="b-brand">
-                    <div className="b-bg">
-                        <i className="feather icon-trending-up"/>
+
+                    <div className='navLogoImg'>
+                        <img src={NavLogoImage} />
                     </div>
-                    <span className="b-title">Datta Able</span>
+
                 </Link>
-                {/* <Link to='#' className={moreClass.join(' ')} onClick={() => setMoreToggle(!moreToggle)}>
-                    <i className="feather icon-more-vertical"/>
-                </Link> */}
+
             </div>
             <div className={collapseClass.join(' ')}>
-                <NavLeft/>
-                <NavRight/>
+                <NavLeft />
+                <NavRight />
             </div>
         </React.Fragment>
     );

@@ -1,20 +1,61 @@
 export const BASENAME = ''; // don't add '/' at end off BASENAME
 export const BASE_URL = '/app';
-export const BASE_TITLE = ' - Athletiverse';
-export const GraphQL_API = 'https://sensible-minnow-28.hasura.app/v1/graphql';
-export const GraphQL_Key = 'm6fvucAor6UC1Y04K1fZzVQ5NYT4AxvnPklLYQ9zeGRCddl58xvASZvaIG9SPS6f';
-export const MapAPI_Key = 'AIzaSyDuZDd_4Q4UxdfjPajkDk8F6hbnIjuYiZU';
-
-
-//#region  API Details
-  export const PreRegisterAthlete = `mutation PreRegister($businessname: String, $emailid: String, $firstname: String, $instagramname: String, $isathlete: Boolean, $latestnewsrequired: Boolean, $zipcode: Int, $city: String, $lastname: String) {
-    insert_ath_ath_m_user_registration(objects: {businessname: $businessname, emailid: $emailid, firstname: $firstname, instagramname: $instagramname, isathlete: $isathlete, latestnewsrequired: $latestnewsrequired, zipcode: $zipcode, city: $city, lastname: $lastname}) {
-      affected_rows
+export const BASE_TITLE = ' - Merchant Back Office';
+export const GraphQL_API = process.env.REACT_APP_GraphQL_API;
+ export const Get_Player =`query getdata {
+    player_players {
+      id
+      merchant_id
+      updated_at
+      created_at
+      aasm_state
+      wager_status {
+        aasm_state
+      }
+      merchant_reference
     }
-  }`
-//#endregion
+  }` ;
 
+  export const Get_PlayerBy_PlayerId =`query getdata($id:String) {
+  search_playersbyid(args: {search: $id}) {
+    id
+    merchant_reference
+    aasm_state
+    reason_for_state
+    created_at
+    wager_status {
+      aasm_state
+    }
+    updated_at
+  }
+}` ;
 
+  export const Get_PlayerDetailsBy_Id =`query getdata($playerId:String) {
+    player_players(where: {id: {_eq: $playerId}}) {
+      id
+      aasm_state
+      wager_status {
+        aasm_state
+      }
+      updated_at
+      created_at
+      merchant_reference
+      reason_for_state
+       total_spent {
+      final_cost_cents
+    }
+    }
+  }` ;
+  
+  export const Get_Player_Order =`query getdata($id:String) {
+      store_orders(where: {player_id: {_ilike: $id}}) {
+        id
+        credit_amount: ordered_credits_cents
+        status: aasm_state
+        updated_at
+        merchant_reference
+    }
+  }` ;
 
 export const CONFIG = {
     layout: 'vertical', // vertical, horizontal
@@ -22,13 +63,13 @@ export const CONFIG = {
     collapseMenu: false, // mini-menu
     layoutType: 'menu-dark', // menu-dark, menu-light, dark
     navIconColor: false,
-    headerBackColor: 'header-default', // header-default, header-blue, header-red, header-purple, header-lightblue, header-dark
+    headerBackColor: 'header-dark', // header-default, header-blue, header-red, header-purple, header-lightblue, header-dark
     navBackColor: 'navbar-default', // navbar-default, navbar-blue, navbar-red, navbar-purple, navbar-lightblue, navbar-dark
     navBrandColor: 'brand-default', // brand-default, brand-blue, brand-red, brand-purple, brand-lightblue, brand-dark
     navBackImage: false, // false, navbar-image-1, navbar-image-2, navbar-image-3, navbar-image-4, navbar-image-5
     rtlLayout: false,
     navFixedLayout: true, // only for vertical layouts
-    headerFixedLayout: false, // only for vertical layouts
+    headerFixedLayout: true, // only for vertical layouts
     boxLayout: false,
     navDropdownIcon: 'style1', // style1, style2, style3
     navListIcon: 'style1', // style1, style2, style3, style4, style5, style6
@@ -56,3 +97,4 @@ export const CONFIG = {
         domain: 'dev-w0-vxep3.us.auth0.com'
     }
 };
+

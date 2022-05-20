@@ -1,13 +1,13 @@
 {
-  "name": "datta-able-react-hook",
+  "name": "app",
   "version": "17.0.1",
   "private": true,
-  "homepage": "http://dev-athletiverse.drscloud.net/",
+  "homepage": "http://stage-gpn.drscloud.net/",
   "dependencies": {
     "@amcharts/amcharts3-react": "^3.1.0",
-    "@amcharts/amcharts4": "^4.10.15",
+    "@amcharts/amcharts4": "^4.10.24",
     "@amcharts/amcharts4-geodata": "^4.1.19",
-    "@auth0/auth0-spa-js": "^1.13.6",
+    "@auth0/auth0-spa-js": "^1.20.0",
     "@ckeditor/ckeditor5-build-balloon": "12.3.0",
     "@ckeditor/ckeditor5-build-classic": "12.3.0",
     "@ckeditor/ckeditor5-build-decoupled-document": "12.3.0",
@@ -23,6 +23,7 @@
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
+    "amazon-cognito-identity-js": "^5.2.6",
     "amcharts3": "^3.21.15",
     "apexcharts": "^3.23.1",
     "aphrodite": "^2.4.0",
@@ -35,14 +36,15 @@
     "deni-react-treeview": "^1.1.11",
     "echarts": "^5.0.2",
     "echarts-for-react": "^3.0.0-beta.2",
+    "env-cmd": "^10.1.0",
     "firebase": "^8.2.4",
     "formik": "^2.2.6",
     "highcharts": "^8.2.2",
     "highcharts-react-official": "^3.0.0",
-    "history": "^5.0.0",
+    "history": "^5.3.0",
     "install": "^0.13.0",
-    "jodit": "^3.5.4",
-    "jodit-react": "^1.0.70",
+    "jodit": "^3.14.3",
+    "jodit-react": "^1.2.6",
     "jquery": "^3.5.1",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",
@@ -102,7 +104,7 @@
     "react-trello": "^2.2.10",
     "react-useinterval": "^1.0.2",
     "reactour": "^1.18.0",
-    "recharts": "^2.0.3",
+    "recharts": "^2.1.9",
     "redux": "^4.0.5",
     "redux-form": "^8.3.7",
     "rodal": "^1.8.1",
@@ -114,8 +116,8 @@
     "yup": "^0.32.8"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "env-cmd -f .env.dev react-scripts start",
+    "build": "env-cmd -f .env.prod react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -136,6 +138,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {}
+  }
 }

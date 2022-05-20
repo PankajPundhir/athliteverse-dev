@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { ListGroup, Dropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
+import * as resource from '../../../../../src/config/resource';
 import useWindowSize from "../../../../hooks/useWindowSize";
 import { ConfigContext } from "../../../../contexts/ConfigContext";
 import NavSearch from "./NavSearch";
@@ -23,8 +23,9 @@ const NavLeft = () => {
 
     return (
         <React.Fragment>
+            <h5 className='mt-2 ml-5 text-white justify-content-start'>{resource.LogIn.Application_Title}</h5>
             <ListGroup as='ul' bsPrefix=' ' className="navbar-nav mr-auto">
-                <ListGroup.Item as='li' bsPrefix=' ' className={navItemClass.join(' ')}>
+                {/* <ListGroup.Item as='li' bsPrefix=' ' className={navItemClass.join(' ')}>
                     <Dropdown alignRight={dropdownRightAlign}>
                         <Dropdown.Toggle variant={'link'} id="dropdown-basic">
                             Dropdown
@@ -37,11 +38,12 @@ const NavLeft = () => {
                             </Dropdown.Menu>
                         </ul>
                     </Dropdown>
-                </ListGroup.Item>
+                </ListGroup.Item> 
                 <ListGroup.Item as='li' bsPrefix=' ' className="nav-item">
                     <NavSearch windowWidth={windowSize.width}/>
-                </ListGroup.Item>
+                </ListGroup.Item> */}
             </ListGroup>
+            
         </React.Fragment>
     );
 };

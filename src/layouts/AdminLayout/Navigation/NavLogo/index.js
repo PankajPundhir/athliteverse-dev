@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-
+import NavLogoImage from '../NavLogo/NavLogoImg.png';
 import { ConfigContext } from "../../../../contexts/ConfigContext";
 import * as actionType from "../../../../store/actions";
 
@@ -18,13 +18,13 @@ const NavLogo = () => {
     return (
         <React.Fragment>
             <div className="navbar-brand header-logo">
-                 <Link to='#' className="b-brand">
-                    <div className="b-bg">
-                        <i className="feather icon-trending-up" />
+                <Link to='#' className="b-brand">
+                    <div className='navLogoImg'>
+                        <img src={NavLogoImage} />
                     </div>
-                    <span className="b-title">Datta Able</span>
-                 </Link>
-                <Link to='#' className={toggleClass.join(' ')} id="mobile-collapse" onClick={() => dispatch({type: actionType.COLLAPSE_MENU})}><span /></Link>
+                    {/* <span className="b-title">GPN</span> */}
+                </Link>
+                <Link to='#' className={toggleClass.join(' ')} id="mobile-collapse" onClick={() => dispatch({ type: actionType.COLLAPSE_MENU })}><span /></Link>
             </div>
         </React.Fragment>
     );

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 import Navigation from "./Navigation";
 import NavBar from "./NavBar";
@@ -95,6 +96,11 @@ const AdminLayout = ({ children }) => {
             {common}
             {mainContainer}
             { configBlock && <Configuration/> }
+            <footer className='footer text-center'>
+                <div className="d-flex offset-lg-2 justify-content-center align-items-center pt-2 pb-2">
+                    <div>&copy; 2022 Game Play Network, Inc. Patent Protected. All Rights Reserved</div>
+                </div>
+            </footer>
         </React.Fragment>
     );
 };

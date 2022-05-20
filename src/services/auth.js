@@ -11,8 +11,8 @@ const delay = (timeout) => {
 
 const users = [{
     id: '5e86809283e28b96d2d38537',
-    email: 'demo@gmail.com',
-    password: '123456'
+    email: '',
+    password: ''
 }];
 
 services.onPost('/api/account/login').reply(async (config) => {
